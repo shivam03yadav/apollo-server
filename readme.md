@@ -5,7 +5,7 @@ it is a query languange for API, developed by facebook. It provides an approach 
 It allows clients to define the structure of the data required, and the same structure of the data is returned from the server, therefore preventing excessively large amount of data from being returned,but this has implications for how effective web caching of query results can be.
 
 
-# Difference between Graphql and Rest
+# Difference between GraphQL and Rest
 
 **REST**(Representational State Transfer)is an API design architecture to implement web services.
 >Rest-compliant web services allow the requesting systems to access and manipulate textual representations of web resources by using a uniform and predefined set of stateless operations.
