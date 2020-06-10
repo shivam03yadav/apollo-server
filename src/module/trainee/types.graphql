@@ -1,5 +1,4 @@
-type User {
-  id: ID!
+input UserInput {
   name: String!
   email: String!
   role: String!
