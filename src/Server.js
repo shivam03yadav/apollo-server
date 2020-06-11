@@ -1,6 +1,6 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import graphqlHTTP from 'express-graphql';
+import { createServer } from 'http';
 
 class Server {
   constructor(config){
@@ -14,7 +14,8 @@ class Server {
   }
 
   run = () => {
-    this.app.listen(this.config.port, (err) =>{
+    const { config: {port}, } = this;
+      this.httpServer.listen(this.config.port, (err) =>{
       if(err){
         console.log('error');
         throw err;
@@ -26,12 +27,6 @@ class Server {
   setupRoutes(){
     this.app.use('/health-check',(req, res,) => {
       res.send('i am ok ');
-      this.app.use('/graphql',
-      graphqlHTTP({
-        schema,
-        graphql: true,
-      })
-      );
     });
   };
 
@@ -39,6 +34,9 @@ class Server {
     const { app } = this;
     this.server = new ApolloServer({ ...schema });
     this.server.applyMiddleware({ app });
+    this.httpServer = createServer(app);
+    this.server.installSubscriptionHandlers(this.httpServer)
+    this.run();
   }
 }
 
