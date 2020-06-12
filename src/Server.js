@@ -1,6 +1,7 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
+import { UserAPI } from './datasource/index';
 
 class Server {
   constructor(config){
@@ -32,7 +33,14 @@ class Server {
 
   async setupApolloServer(schema) {
     const { app } = this;
-    this.server = new ApolloServer({ ...schema });
+    this.server = new ApolloServer({
+      ...schema,
+      dataSources: () => {
+        return {
+          userAPI: new UserAPI(),
+        };
+      },
+     });
     this.server.applyMiddleware({ app });
     this.httpServer = createServer(app);
     this.server.installSubscriptionHandlers(this.httpServer)

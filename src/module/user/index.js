@@ -1,2 +1,4 @@
 import Query from './query';
-export default Query;
+import Mutation from './mutation';
+
+export { Query, Mutation };
