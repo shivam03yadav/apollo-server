@@ -20,6 +20,7 @@ class Server {
       }
       console.log(`server is running on port ${this.config.port}`);
     });
+    return this;
   }
 
   setupRoutes(){
@@ -32,6 +33,7 @@ class Server {
     const { app } = this;
     this.server = new ApolloServer({ ...schema });
     this.server.applyMiddleware({ app });
+    return this;
   }
 }
 export default Server;
