@@ -34,5 +34,4 @@ class Server {
     this.server.applyMiddleware({ app });
   }
 }
-
 export default Server;
