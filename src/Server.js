@@ -22,6 +22,7 @@ class Server {
       }
       console.log(`server is running on port ${this.config.port}`);
     });
+    return this;
   }
 
   setupRoutes(){
