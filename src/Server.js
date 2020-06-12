@@ -1,6 +1,5 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import graphqlHTTP from 'express-graphql';
 
 class Server {
   constructor(config){
