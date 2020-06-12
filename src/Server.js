@@ -26,12 +26,6 @@ class Server {
   setupRoutes(){
     this.app.use('/health-check',(req, res,) => {
       res.send('i am ok ');
-      this.app.use('/graphql',
-      graphqlHTTP({
-        schema,
-        graphql: true,
-      })
-      );
     });
   };
 
