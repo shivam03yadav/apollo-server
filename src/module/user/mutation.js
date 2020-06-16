@@ -4,5 +4,10 @@ export default {
     const { dataSources: { userAPI }} = context;
     const response = await userAPI.loginUser({ email, password });
     return response.data;
-  }
+  },
+  getMe: async(parent, args, context) => {
+    const { dataSources:{ userAPI },} = context;
+    const response = await userAPI.getMe();
+    return response.data;
+  },
 }
