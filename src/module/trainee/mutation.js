@@ -11,7 +11,7 @@ export default {
 
   },
   updateTrainee: async (parent, args, context) =>{
-    const { payload: {name, email, password}, } = args;
+    const { payload: { id,name, email }, } = args;
     const { dataSources:{ traineeAPI }, } = context;
     const response = await traineeAPI.updateTrainee({ id, name, email });
     pubsub.publish(constant.subscriptions.TraineeUpdated, { traineeUpdated: { id, name, email },});
