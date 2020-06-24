@@ -1,5 +1,38 @@
-input UserInput {
+type getUser {
   name: String!
+  id: ID!
   email: String!
   role: String!
+  originalId: ID!
+  createdAt: String!
 }
+
+type getAllUser {
+  count: Int!
+  records: [getUser]!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  id: ID!
+  name: String
+  email: String
+}
+
+type updateUser {
+  id: ID!
+  name: String
+  email: String
+}
+
+input getAllTrainees {
+  skip: Int!
+  limit: Int!
+}
+
+
